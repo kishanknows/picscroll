@@ -39,6 +39,7 @@ const HomeScreen = props => {
       <View
         style={{
           backgroundColor: 'black',
+          justifyContent: 'center',
         }}>
         <Image
           source={{uri: props.url}}
@@ -50,17 +51,28 @@ const HomeScreen = props => {
         />
         <View
           style={{
-            flexDirection: 'row',
             position: 'absolute',
             bottom: 1,
             marginBottom: 100,
             marginLeft: 10,
+            padding: 5,
           }}>
-          <FontAwesomeIcon name="user-circle" size={40} color="white" />
-          <View style={{paddingLeft: 10}}>
-            <Text style={{color: 'white'}}>{props.username}</Text>
-            <Text style={{color: 'white'}}>Abusadamente desp.</Text>
+          <View style={{flexDirection: 'row'}}>
+            <FontAwesomeIcon name="user-circle" size={40} color="white" />
+            <Text
+              style={{
+                color: 'white',
+                fontWeight: 'bold',
+                padding: 5,
+                fontSize: 13,
+                alignSelf: 'flex-end',
+              }}>
+              @{props.username}
+            </Text>
           </View>
+          <Text style={{color: 'white', paddingTop: 10}}>
+            Abusadamente desp.
+          </Text>
         </View>
       </View>
     );
@@ -75,7 +87,6 @@ const HomeScreen = props => {
       <CustomModal {...props} />
       <FlatList
         snapToInterval={Dimensions.get('window').height}
-        snapToAlignment="start"
         showsVerticalScrollIndicator={false}
         onRefresh={getImages}
         disableIntervalMomentum={true}
