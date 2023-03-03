@@ -1,7 +1,6 @@
 import {View, Pressable} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import Ionicon from 'react-native-vector-icons/Ionicons';
-
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 const HomeHeader = props => {
   return (
     <View
@@ -11,8 +10,8 @@ const HomeHeader = props => {
       }}>
       <Pressable
         onPress={() => props.navigation.setParams({showModal: true})}
-        style={{marginHorizontal: 20}}>
-        <Ionicon name="add-circle-outline" size={30} color="white" />
+        style={{marginHorizontal: 30}}>
+        <AntDesignIcon name="plus" size={25} color="white" />
       </Pressable>
       <Pressable onPress={() => props.navigation.navigate('Profile')}>
         <FontAwesomeIcon name="user-circle" size={40} color="white" />

@@ -11,10 +11,14 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useState} from 'react';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
+import {useSelector} from 'react-redux';
 
 const CustomModal = props => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const username = useSelector(state => state.userConfig.email);
 
   const closeModal = () => {
     props.navigation.setParams({showModal: false});
@@ -22,17 +26,37 @@ const CustomModal = props => {
   };
 
   const uploadImg = () => {
-    console.log('upload!');
     setLoading(true);
-    const reference = storage().ref('uploads/' + result.fileName);
-    reference
-      .putFile(result.uri)
-      .then(() => {
-        closeModal();
-        setLoading(false);
-        console.log('file uploaded!');
-      })
-      .catch(error => console.log(error));
+    const uploadTask = storage()
+      .ref('uploads/' + result.fileName)
+      .putFile(result.uri);
+    uploadTask.on(
+      'state_changed',
+      snapshot => console.log(snapshot.state),
+      error => console.log(error),
+      () => {
+        uploadTask.snapshot.ref
+          .getDownloadURL()
+          .then(url => {
+            console.log(url);
+            firestore()
+              .collection('Uploads')
+              .add({
+                username: username,
+                image_url: url,
+                posted_on: Date.now(),
+              })
+              .then(() => console.log('uploaded to firestore!'));
+            closeModal();
+            setLoading(false);
+          })
+          .catch(error => {
+            setLoading(false);
+            closeModal();
+            console.log(error);
+          });
+      },
+    );
   };
 
   const addImage = key => {
@@ -62,7 +86,6 @@ const CustomModal = props => {
         break;
     }
   };
-  console.log(result);
   return (
     <Modal
       animationType="slide"
