@@ -8,13 +8,15 @@ import Styles from './authStyle';
 
 const SignUpScreen = ({navigation}) => {
   const initialState = {
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
   };
 
   const [loading, setLoading] = useState(false);
-  const [{email, password, confirmPassword}, setState] = useState(initialState);
+  const [{username, email, password, confirmPassword}, setState] =
+    useState(initialState);
 
   const dispatch = useDispatch();
 
@@ -24,11 +26,13 @@ const SignUpScreen = ({navigation}) => {
       auth()
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
-          console.log('User account created & signed in!');
-          dispatch(setUser(res.user.providerData[0]));
-          setLoading(false);
-          setState({...initialState});
-          navigation.replace('Home');
+          res.user.updateProfile({displayName: username}).then(() => {
+            console.log('User account created & signed in!');
+            dispatch(setUser(auth().currentUser?.providerData[0]));
+            setLoading(false);
+            setState({...initialState});
+            navigation.reset({index: 0, routes: [{name: 'Home'}]});
+          });
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {
@@ -56,6 +60,14 @@ const SignUpScreen = ({navigation}) => {
         style={Styles.logoStyle}
       />
       <View style={Styles.inputStyle}>
+        <TextInput
+          style={Styles.inputFieldStyle}
+          placeholder="Username"
+          value={username}
+          onChangeText={text =>
+            setState(prevState => ({...prevState, username: text}))
+          }
+        />
         <TextInput
           style={Styles.inputFieldStyle}
           placeholder="Email"
