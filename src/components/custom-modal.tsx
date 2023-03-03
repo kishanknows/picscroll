@@ -13,12 +13,15 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import {useSelector} from 'react-redux';
+import {RootState} from '../redux/store';
 
 const CustomModal = props => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const username = useSelector(state => state.userConfig.email);
+  const username = useSelector(
+    (state: RootState) => state.userConfig.displayName,
+  );
 
   const closeModal = () => {
     props.navigation.setParams({showModal: false});
