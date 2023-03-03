@@ -14,7 +14,7 @@ const HomeHeader = props => {
         <AntDesignIcon name="plus" size={25} color="white" />
       </Pressable>
       <Pressable onPress={() => props.navigation.navigate('Profile')}>
-        <FontAwesomeIcon name="user-circle" size={40} color="white" />
+        <FontAwesomeIcon name="user-circle" size={30} color="white" />
       </Pressable>
     </View>
   );
