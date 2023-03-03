@@ -48,14 +48,23 @@ const HomeScreen = props => {
             resizeMode: 'contain',
           }}
         />
-        <View style={{flexDirection: 'row', position: 'absolute'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            position: 'absolute',
+            bottom: 1,
+            marginBottom: 100,
+            marginLeft: 10,
+          }}>
           <FontAwesomeIcon name="user-circle" size={40} color="white" />
-          <Text style={{color: 'white'}}>{props.username}</Text>
+          <View style={{paddingLeft: 10}}>
+            <Text style={{color: 'white'}}>{props.username}</Text>
+            <Text style={{color: 'white'}}>Abusadamente desp.</Text>
+          </View>
         </View>
       </View>
     );
   };
-
   return (
     <View style={Styles.container}>
       <StatusBar
