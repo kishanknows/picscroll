@@ -163,9 +163,11 @@ const Styles = StyleSheet.create({
     height: 130,
     width: 200,
     marginTop: '80%',
-    borderRadius: 30,
+    borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 5,
+    borderWidth: 0.5,
+    borderColor: 'white',
   },
   textArea: {
     flex: 3,
