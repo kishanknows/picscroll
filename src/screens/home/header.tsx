@@ -1,7 +1,21 @@
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import {View, Pressable} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-const HomeHeader = props => {
+import {useState} from 'react';
+
+const HeaderLeft = props => {
+  return (
+    <Ionicon
+      name="menu"
+      size={25}
+      color={'white'}
+      onPress={() => props.navigation.setParams({showMenu: true})}
+    />
+  );
+};
+
+const HeaderRight = props => {
   return (
     <View
       style={{
@@ -18,6 +32,16 @@ const HomeHeader = props => {
       </Pressable>
     </View>
   );
+};
+
+const HomeHeader = props => {
+  return {
+    headerTitle: 'Picscroll',
+    headerTintColor: 'white',
+    headerTransparent: true,
+    headerLeft: () => <HeaderLeft {...props} />,
+    headerRight: () => <HeaderRight {...props} />,
+  };
 };
 
 export default HomeHeader;

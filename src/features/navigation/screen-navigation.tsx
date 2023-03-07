@@ -8,7 +8,7 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ProfileHeader from '../../components/profile-header';
-import HomeHeader from '../../components/home-header';
+import HomeHeader from '../../screens/home/header';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,14 +50,7 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={props => {
-            return {
-              headerTitle: 'Picscroll',
-              headerTintColor: 'white',
-              headerStyle: {backgroundColor: '#492849'},
-              headerRight: () => <HomeHeader {...props} />,
-            };
-          }}
+          options={props => HomeHeader(props)}
         />
       </Stack.Navigator>
     </NavigationContainer>
