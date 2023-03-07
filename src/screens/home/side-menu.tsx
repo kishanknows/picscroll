@@ -17,7 +17,10 @@ const SideMenu = props => {
           style={
             activeIndex === 1 ? styles.activeMenuItem : styles.inactiveMenuItem
           }
-          onPress={() => setActiveIndex(1)}>
+          onPress={() => {
+            props.setTab(1);
+            setActiveIndex(1);
+          }}>
           <Text
             style={
               activeIndex === 1
@@ -31,7 +34,10 @@ const SideMenu = props => {
           style={
             activeIndex === 2 ? styles.activeMenuItem : styles.inactiveMenuItem
           }
-          onPress={() => setActiveIndex(2)}>
+          onPress={() => {
+            props.setTab(2);
+            setActiveIndex(2);
+          }}>
           <Text
             style={
               activeIndex === 2
@@ -39,6 +45,23 @@ const SideMenu = props => {
                 : styles.inactiveMenuItemText
             }>
             Cats
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={
+            activeIndex === 3 ? styles.activeMenuItem : styles.inactiveMenuItem
+          }
+          onPress={() => {
+            props.setTab(3);
+            setActiveIndex(3);
+          }}>
+          <Text
+            style={
+              activeIndex === 3
+                ? styles.activeMenuItemText
+                : styles.inactiveMenuItemText
+            }>
+            Dogs
           </Text>
         </TouchableOpacity>
       </View>
