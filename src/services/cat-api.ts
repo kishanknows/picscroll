@@ -1,16 +1,16 @@
 import axios from 'axios';
-import Config from './config';
+import {API_KEY, CAT_API_URL} from '@env';
 
 const catAPI = () => {
   return axios({
     method: 'get',
-    baseURL: Config.CAT_API_URL,
+    baseURL: CAT_API_URL,
     url: '/search',
     params: {
       limit: 5,
     },
     headers: {
-      'x-api-key': Config.API_KEY,
+      'x-api-key': API_KEY,
     },
   });
 };
