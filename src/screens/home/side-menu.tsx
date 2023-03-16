@@ -1,15 +1,22 @@
 import {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Modal from 'react-native-modal';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../redux/store';
+import {showDrawer} from '../../redux/general-slice';
 
 const SideMenu = props => {
   const [activeIndex, setActiveIndex] = useState(1);
+  const drawerShown = useSelector(
+    (state: RootState) => state.general.drawerShown,
+  );
+  const dispatch = useDispatch();
   return (
     <Modal
-      isVisible={props.route.params?.showMenu}
+      isVisible={drawerShown}
       animationIn="slideInLeft"
       animationOut="slideOutLeft"
-      onBackdropPress={() => props.navigation.setParams({showMenu: false})}
+      onBackdropPress={() => dispatch(showDrawer(false))}
       style={{margin: 0}}>
       <View style={styles.container}>
         <Text style={styles.sideMenuHeader}>Contents</Text>

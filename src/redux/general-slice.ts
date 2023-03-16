@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   uploadModalShown: false,
-  profileModalShown: false,
+  pickerModalShown: false,
   drawerShown: false,
 };
 
@@ -13,8 +13,8 @@ export const generalSlice = createSlice({
     showUploadModal: (state, action) => {
       state.uploadModalShown = action.payload;
     },
-    showProfileModal: (state, action) => {
-      state.profileModalShown = action.payload;
+    showPickerModal: (state, action) => {
+      state.pickerModalShown = action.payload;
     },
     showDrawer: (state, action) => {
       state.drawerShown = action.payload;
@@ -22,6 +22,6 @@ export const generalSlice = createSlice({
   },
 });
 
-export const {showUploadModal, showDrawer, showProfileModal} =
+export const {showUploadModal, showDrawer, showPickerModal} =
   generalSlice.actions;
 export default generalSlice.reducer;
