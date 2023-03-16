@@ -1,12 +1,22 @@
-import {StyleSheet, View, StatusBar, Text, Button} from 'react-native';
-import {useSelector} from 'react-redux';
+import {
+  StyleSheet,
+  View,
+  StatusBar,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import {useState} from 'react';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import {showPickerModal} from '../redux/general-slice';
+import PickerModal from '../components/picker-modal';
+import UploadModal from '../components/upload-modal';
 
-const ProfileScreen = () => {
-  const [test, setTest] = useState(false);
+const ProfileScreen = props => {
   const user = useSelector((state: RootState) => state.userConfig);
+  const dispatch = useDispatch();
   return (
     <View style={Styles.background}>
       <StatusBar
@@ -14,13 +24,37 @@ const ProfileScreen = () => {
         barStyle="light-content"
         translucent={true}
       />
-      {test ? (
-        <View style={Styles.container}></View>
-      ) : (
-        <FontAwesomeIcon name="user-circle" size={200} color="black" />
-      )}
+      <View style={Styles.container}>
+        {user.photoURL ? (
+          <Image
+            source={{uri: user.photoURL}}
+            style={{
+              height: 200,
+              width: 200,
+              borderRadius: 100,
+            }}
+          />
+        ) : (
+          <FontAwesomeIcon name="user-circle" size={200} color="black" />
+        )}
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#492849',
+            padding: 10,
+            position: 'absolute',
+            alignSelf: 'flex-end',
+            borderRadius: 40,
+            marginRight: 10,
+            borderWidth: 1,
+            borderColor: 'white',
+          }}
+          onPress={() => dispatch(showPickerModal(true))}>
+          <IonIcon name="camera-outline" size={25} color="white" />
+        </TouchableOpacity>
+      </View>
       <Text style={Styles.details}>{user.displayName}</Text>
-      <Button onPress={() => setTest(!test)} title="press" />
+      <PickerModal />
+      <UploadModal {...props} />
     </View>
   );
 };
@@ -36,13 +70,16 @@ const Styles = StyleSheet.create({
     // flex: 1,
     height: 200,
     width: 200,
-    backgroundColor: 'red',
-    borderRadius: 100,
+    // backgroundColor: 'red',
+    flexDirection: 'column-reverse',
+    // borderRadius: 100,
   },
   details: {
     flex: 3,
     fontWeight: 'bold',
     fontSize: 20,
+    padding: 20,
+    color: 'black',
   },
 });
 
