@@ -9,7 +9,6 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from 'react-native';
-import CustomModal from '../../components/custom-modal';
 import {useEffect, useState} from 'react';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import firestore, {
@@ -18,6 +17,8 @@ import firestore, {
 import SideMenu from './side-menu';
 import catAPI from '../../services/cat-api';
 import dogAPI from '../../services/dog-api';
+import PickerModal from '../../components/picker-modal';
+import UploadModal from '../../components/upload-modal';
 
 const HomeScreen = props => {
   const [posts, setPosts] = useState<FirebaseFirestoreTypes.DocumentData[]>();
@@ -96,7 +97,14 @@ const HomeScreen = props => {
         <Image source={{uri: props.url}} style={styles.itemImage} />
         <View style={styles.itemDetailView}>
           <View style={{flexDirection: 'row'}}>
-            <FontAwesomeIcon name="user-circle" size={40} color="white" />
+            {props.user_image_url ? (
+              <Image
+                source={{uri: props.user_image_url}}
+                style={styles.itemAvatar}
+              />
+            ) : (
+              <FontAwesomeIcon name="user-circle" size={40} color="white" />
+            )}
             <Text style={styles.itemDetailText}>@{props.username}</Text>
           </View>
           <Text style={styles.itemDescriptionText}>Abusadamente desp.</Text>
@@ -105,9 +113,7 @@ const HomeScreen = props => {
     );
   };
 
-  useEffect(() => {
-    onRefresh();
-  }, []);
+  useEffect(onRefresh, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -116,7 +122,8 @@ const HomeScreen = props => {
         barStyle="light-content"
         translucent={true}
       />
-      <CustomModal {...props} />
+      <PickerModal />
+      <UploadModal {...props} />
       <SideMenu {...props} setTab={setTab} />
       <FlatList
         snapToInterval={Dimensions.get('screen').height}
@@ -135,6 +142,7 @@ const HomeScreen = props => {
           <Item
             url={tab === 1 ? item.image_url : item.url}
             username={tab === 1 ? item.username : item.id}
+            user_image_url={tab === 1 ? item.user_image_url : null}
           />
         )}
       />
@@ -171,7 +179,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     alignSelf: 'flex-end',
   },
-  itemDescriptionText: {color: 'white', paddingTop: 10},
+  itemDescriptionText: {
+    color: 'white',
+    paddingTop: 10,
+  },
+  itemAvatar: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+  },
 });
 
 export default HomeScreen;

@@ -1,21 +1,26 @@
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import {View, Pressable} from 'react-native';
+import {View, Pressable, Image, StyleSheet} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {showDrawer, showPickerModal} from '../../redux/general-slice';
+import {RootState} from '../../redux/store';
 
 const HeaderLeft = props => {
+  const dispatch = useDispatch();
   return (
     <Ionicon
       name="menu"
       size={25}
       color={'white'}
-      onPress={() => props.navigation.setParams({showMenu: true})}
+      onPress={() => dispatch(showDrawer(true))}
     />
   );
 };
 
 const HeaderRight = props => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.userConfig);
   return (
     <View
       style={{
@@ -23,12 +28,16 @@ const HeaderRight = props => {
         alignItems: 'center',
       }}>
       <Pressable
-        onPress={() => props.navigation.setParams({showModal: true})}
+        onPress={() => dispatch(showPickerModal(true))}
         style={{marginHorizontal: 30}}>
         <AntDesignIcon name="plus" size={25} color="white" />
       </Pressable>
       <Pressable onPress={() => props.navigation.navigate('Profile')}>
-        <FontAwesomeIcon name="user-circle" size={30} color="white" />
+        {user.photoURL ? (
+          <Image source={{uri: user.photoURL}} style={styles.avatar} />
+        ) : (
+          <FontAwesomeIcon name="user-circle" size={30} color="white" />
+        )}
       </Pressable>
     </View>
   );
@@ -43,5 +52,15 @@ const HomeHeader = props => {
     headerRight: () => <HeaderRight {...props} />,
   };
 };
+
+const styles = StyleSheet.create({
+  avatar: {
+    height: 30,
+    width: 30,
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: 'white',
+  },
+});
 
 export default HomeHeader;
