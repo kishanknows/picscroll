@@ -6,13 +6,14 @@ const Styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   inputStyle: {
-    flex: 3,
+    flex: 4,
     alignSelf: 'stretch',
   },
   inputFieldStyle: {
     borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: 20,
+    paddingLeft: 20,
+    paddingVertical: 5,
     margin: 10,
   },
   container: {

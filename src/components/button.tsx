@@ -19,16 +19,16 @@ const CustomButton = props => {
 
 const Styles = StyleSheet.create({
   buttonStyle: {
-    padding: '2%',
+    padding: '1.5%',
     backgroundColor: '#492849',
     borderRadius: 20,
     margin: 5,
   },
   buttonTextStyle: {
-    fontSize: 20,
+    fontSize: 18,
     alignSelf: 'center',
     color: 'white',
-    fontWeight: '300',
+    fontWeight: '400',
   },
 });
 

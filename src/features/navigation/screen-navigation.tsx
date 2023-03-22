@@ -33,6 +33,7 @@ const AppNavigator = () => {
             return {
               headerTitle: 'Profile',
               headerTintColor: 'white',
+              headerTitleAlign: 'center',
               headerStyle: {backgroundColor: '#492849'},
               headerRight: () => <ProfileHeader {...props} />,
             };
@@ -43,6 +44,7 @@ const AppNavigator = () => {
           component={SignUpScreen}
           options={{
             headerTitle: 'Register',
+            headerTitleAlign: 'center',
             headerTintColor: 'white',
             headerStyle: {backgroundColor: '#492849'},
           }}

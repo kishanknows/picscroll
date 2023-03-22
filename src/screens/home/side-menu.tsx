@@ -19,7 +19,9 @@ const SideMenu = props => {
       onBackdropPress={() => dispatch(showDrawer(false))}
       style={{margin: 0}}>
       <View style={styles.container}>
-        <Text style={styles.sideMenuHeader}>Contents</Text>
+        <View style={styles.sideMenuHeader}>
+          <Text style={styles.sideMenuHeaderText}>Contents</Text>
+        </View>
         <TouchableOpacity
           style={
             activeIndex === 1 ? styles.activeMenuItem : styles.inactiveMenuItem
@@ -81,19 +83,26 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '70%',
     backgroundColor: 'white',
-    paddingTop: 15,
   },
   sideMenuHeader: {
+    backgroundColor: '#492849',
+    justifyContent: 'center',
+    paddingTop: 15,
+    borderBottomStartRadius: 20,
+    marginBottom: 10,
+    // borderBottomEndRadius: 20,
+  },
+  sideMenuHeaderText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
     marginLeft: 15,
     marginBottom: 20,
   },
   activeMenuItem: {
     height: 40,
     backgroundColor: '#f6eff6',
-    marginTop: 20,
+    // marginTop: 20,
     borderRadius: 6,
     justifyContent: 'center',
   },
@@ -111,7 +120,7 @@ const styles = StyleSheet.create({
   inactiveMenuItem: {
     height: 40,
     backgroundColor: 'white',
-    marginTop: 20,
+    // marginTop: 20,
     borderRadius: 6,
     justifyContent: 'center',
   },

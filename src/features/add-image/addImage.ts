@@ -11,6 +11,7 @@ const addImage = async (mode: 'camera' | 'storage') => {
       result = await launchCamera({
         mediaType: 'photo',
         presentationStyle: 'fullScreen',
+        maxHeight: 500,
       });
       break;
     case 'storage':
