@@ -1,7 +1,5 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import authReducer from '../features/auth/authSlice';
-import imageReducer from '../features/add-image/imageSlice';
-import generalReducer from './general-slice';
+import {configureStore} from '@reduxjs/toolkit';
+import rootReducer from './slices';
 import {
   persistStore,
   persistReducer,
@@ -13,12 +11,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const rootReducer = combineReducers({
-  userConfig: authReducer,
-  selectedImg: imageReducer,
-  general: generalReducer,
-});
 
 const persistConfig = {
   key: 'root',

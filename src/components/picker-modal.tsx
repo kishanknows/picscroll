@@ -2,10 +2,10 @@ import Modal from 'react-native-modal';
 import {View, StyleSheet, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
-import {showPickerModal, showUploadModal} from '../redux/general-slice';
+import {showPickerModal, showUploadModal} from '../redux/slices/general-slice';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import addImage from '../features/add-image/addImage';
-import {setImage} from '../features/add-image/imageSlice';
+import addImage from '../utils/add-image';
+import {setImage} from '../redux/slices/image-slice';
 
 const PickerModal = () => {
   const dispatch = useDispatch();

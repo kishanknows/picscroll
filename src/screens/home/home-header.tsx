@@ -3,7 +3,7 @@ import {View, Pressable, Image, StyleSheet} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {showDrawer, showPickerModal} from '../../redux/general-slice';
+import {showDrawer, showPickerModal} from '../../redux/slices/general-slice';
 import {RootState} from '../../redux/store';
 
 const HeaderLeft = props => {

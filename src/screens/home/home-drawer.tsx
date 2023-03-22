@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../redux/store';
-import {showDrawer} from '../../redux/general-slice';
+import {showDrawer} from '../../redux/slices/general-slice';
 
 const SideMenu = props => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderBottomStartRadius: 20,
     marginBottom: 10,
-    // borderBottomEndRadius: 20,
   },
   sideMenuHeaderText: {
     fontSize: 20,

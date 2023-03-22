@@ -1,10 +1,10 @@
 import {Image, Text, TextInput, View, StatusBar} from 'react-native';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import CustomButton from '../../components/button';
 import auth from '@react-native-firebase/auth';
 import {useDispatch, useSelector} from 'react-redux';
-import {setUser, unsetUser} from './authSlice';
-import Styles from './authStyle';
+import {setUser} from '../../redux/slices/auth-slice';
+import Styles from './register.style';
 
 const LoginScreen = ({navigation}) => {
   const initialState = {

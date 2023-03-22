@@ -2,7 +2,7 @@ import {Pressable} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch} from 'react-redux';
-import {unsetUser} from '../features/auth/authSlice';
+import {unsetUser} from '../../redux/slices/auth-slice';
 
 const ProfileHeader = props => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ProfileHeader = props => {
   };
   return (
     <Pressable onPress={Logout}>
-      <Icon name="logout" size={30} color="white" />
+      <Icon name="logout" size={25} color="white" />
     </Pressable>
   );
 };

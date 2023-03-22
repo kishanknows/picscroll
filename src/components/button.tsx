@@ -9,7 +9,7 @@ const CustomButton = props => {
   return (
     <TouchableOpacity style={Styles.buttonStyle} onPress={props.onClick}>
       {props.isLoading ? (
-        <ActivityIndicator />
+        <ActivityIndicator size={22} color="white" />
       ) : (
         <Text style={Styles.buttonTextStyle}>{props.title}</Text>
       )}

@@ -2,14 +2,14 @@ import Modal from 'react-native-modal';
 import {View, StyleSheet, Text, ActivityIndicator} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
-import {showUploadModal} from '../redux/general-slice';
+import {showUploadModal} from '../redux/slices/general-slice';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import {unsetImage} from '../features/add-image/imageSlice';
+import {unsetImage} from '../redux/slices/image-slice';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useState} from 'react';
 import postImage from '../utils/post-image';
 import updateProfile from '../utils/update-profile';
-import {setUser} from '../features/auth/authSlice';
+import {setUser} from '../redux/slices/auth-slice';
 import auth from '@react-native-firebase/auth';
 
 const UploadModal = props => {

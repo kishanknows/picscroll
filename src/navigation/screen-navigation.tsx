@@ -4,11 +4,11 @@ import {
   HomeScreen,
   IntroScreen,
   ProfileScreen,
-} from '../../screens';
+} from '../screens';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ProfileHeader from '../../components/profile-header';
-import HomeHeader from '../../screens/home/header';
+import ProfileHeader from '../screens/profile/profile-header';
+import HomeHeader from '../screens/home/home-header';
 
 const Stack = createNativeStackNavigator();
 

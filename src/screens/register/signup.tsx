@@ -3,8 +3,8 @@ import CustomButton from '../../components/button';
 import auth from '@react-native-firebase/auth';
 import {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {setUser} from './authSlice';
-import Styles from './authStyle';
+import {setUser} from '../../redux/slices/auth-slice';
+import Styles from './register.style';
 
 const SignUpScreen = ({navigation}) => {
   const initialState = {

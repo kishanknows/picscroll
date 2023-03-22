@@ -7,7 +7,7 @@ const dogAPI = () => {
     baseURL: DOG_API_URL,
     url: '/search',
     params: {
-      limit: 5,
+      limit: 10,
     },
     headers: {
       'x-api-key': API_KEY,

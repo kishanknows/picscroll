@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../redux/store';
+import {RootState} from '../../redux/store';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import {showPickerModal} from '../redux/general-slice';
-import PickerModal from '../components/picker-modal';
-import UploadModal from '../components/upload-modal';
+import {showPickerModal} from '../../redux/slices/general-slice';
+import PickerModal from '../../components/picker-modal';
+import UploadModal from '../../components/upload-modal';
 
 const ProfileScreen = props => {
   const user = useSelector((state: RootState) => state.userConfig);

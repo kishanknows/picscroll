@@ -14,7 +14,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
-import SideMenu from './side-menu';
+import SideMenu from './home-drawer';
 import catAPI from '../../services/cat-api';
 import dogAPI from '../../services/dog-api';
 import PickerModal from '../../components/picker-modal';
