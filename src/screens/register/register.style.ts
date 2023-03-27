@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {theme} from '../../theme';
 
 const Styles = StyleSheet.create({
   logoStyle: {
@@ -15,6 +16,8 @@ const Styles = StyleSheet.create({
     paddingLeft: 20,
     paddingVertical: 5,
     margin: 10,
+    backgroundColor: theme.primaryColorLight,
+    borderColor: 'black',
   },
   container: {
     flex: 1,

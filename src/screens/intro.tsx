@@ -1,6 +1,7 @@
 import {View, StatusBar, Image, StyleSheet} from 'react-native';
 import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
+import {theme} from '../theme';
 
 const IntroScreen = ({navigation}) => {
   const isLoggedIn = useSelector(state => state.userConfig.uid);
@@ -26,7 +27,7 @@ const IntroScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   background: {
     justifyContent: 'center',
-    backgroundColor: '#492849',
+    backgroundColor: theme.primaryColor,
     height: '100%',
   },
   image: {

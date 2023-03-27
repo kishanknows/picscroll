@@ -11,6 +11,7 @@ import postImage from '../utils/post-image';
 import updateProfile from '../utils/update-profile';
 import {setUser} from '../redux/slices/auth-slice';
 import auth from '@react-native-firebase/auth';
+import {theme} from '../theme';
 
 const UploadModal = props => {
   const [loading, setLoading] = useState(false);
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     height: 120,
     width: 220,
-    backgroundColor: '#f6eff6',
+    backgroundColor: theme.primaryColorLight,
     borderRadius: 20,
     alignSelf: 'center',
     padding: 10,

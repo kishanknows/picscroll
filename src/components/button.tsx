@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import {theme} from '../theme';
 
 const CustomButton = props => {
   return (
@@ -20,9 +21,10 @@ const CustomButton = props => {
 const Styles = StyleSheet.create({
   buttonStyle: {
     padding: '1.5%',
-    backgroundColor: '#492849',
+    backgroundColor: theme.primaryColor,
     borderRadius: 20,
     margin: 5,
+    elevation: 20,
   },
   buttonTextStyle: {
     fontSize: 18,

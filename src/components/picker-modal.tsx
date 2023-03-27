@@ -6,6 +6,7 @@ import {showPickerModal, showUploadModal} from '../redux/slices/general-slice';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import addImage from '../utils/add-image';
 import {setImage} from '../redux/slices/image-slice';
+import {theme} from '../theme';
 
 const PickerModal = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     height: 120,
     width: 220,
-    backgroundColor: '#f6eff6',
+    backgroundColor: theme.primaryColorLight,
     borderRadius: 20,
     alignSelf: 'center',
     padding: 10,

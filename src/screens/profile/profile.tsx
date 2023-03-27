@@ -13,6 +13,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import {showPickerModal} from '../../redux/slices/general-slice';
 import PickerModal from '../../components/picker-modal';
 import UploadModal from '../../components/upload-modal';
+import {theme} from '../../theme';
 
 const ProfileScreen = props => {
   const user = useSelector((state: RootState) => state.userConfig);
@@ -39,7 +40,7 @@ const ProfileScreen = props => {
         )}
         <TouchableOpacity
           style={{
-            backgroundColor: '#492849',
+            backgroundColor: theme.primaryColor,
             padding: 10,
             position: 'absolute',
             alignSelf: 'flex-end',

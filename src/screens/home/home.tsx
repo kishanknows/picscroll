@@ -124,7 +124,7 @@ const HomeScreen = props => {
       />
       <PickerModal />
       <UploadModal {...props} />
-      <SideMenu {...props} setTab={setTab} />
+      <SideMenu setTab={setTab} />
       <FlatList
         snapToInterval={Dimensions.get('screen').height}
         showsVerticalScrollIndicator={false}

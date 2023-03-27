@@ -9,6 +9,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ProfileHeader from '../screens/profile/profile-header';
 import HomeHeader from '../screens/home/home-header';
+import {theme} from '../theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,7 +35,7 @@ const AppNavigator = () => {
               headerTitle: 'Profile',
               headerTintColor: 'white',
               headerTitleAlign: 'center',
-              headerStyle: {backgroundColor: '#492849'},
+              headerStyle: {backgroundColor: theme.primaryColor},
               headerRight: () => <ProfileHeader {...props} />,
             };
           }}
@@ -46,7 +47,7 @@ const AppNavigator = () => {
             headerTitle: 'Register',
             headerTitleAlign: 'center',
             headerTintColor: 'white',
-            headerStyle: {backgroundColor: '#492849'},
+            headerStyle: {backgroundColor: theme.primaryColor},
           }}
         />
         <Stack.Screen

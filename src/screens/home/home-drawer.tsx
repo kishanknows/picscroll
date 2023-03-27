@@ -4,8 +4,13 @@ import Modal from 'react-native-modal';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../redux/store';
 import {showDrawer} from '../../redux/slices/general-slice';
+import {theme} from '../../theme';
 
-const SideMenu = props => {
+interface SideMenuProps {
+  setTab: (index: number) => void;
+}
+
+const SideMenu = (props: SideMenuProps) => {
   const [activeIndex, setActiveIndex] = useState(1);
   const drawerShown = useSelector(
     (state: RootState) => state.general.drawerShown,
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   sideMenuHeader: {
-    backgroundColor: '#492849',
+    backgroundColor: theme.primaryColor,
     justifyContent: 'center',
     paddingTop: 15,
     borderBottomStartRadius: 20,
@@ -100,13 +105,14 @@ const styles = StyleSheet.create({
   },
   activeMenuItem: {
     height: 40,
-    backgroundColor: '#f6eff6',
-    // marginTop: 20,
+    backgroundColor: theme.primaryColorLight,
     borderRadius: 6,
     justifyContent: 'center',
+    elevation: 10,
+    margin: 10,
   },
   activeMenuItemText: {
-    color: '#492849',
+    color: theme.primaryColor,
     fontWeight: 'bold',
     fontSize: 15,
     marginLeft: 15,
@@ -119,7 +125,6 @@ const styles = StyleSheet.create({
   inactiveMenuItem: {
     height: 40,
     backgroundColor: 'white',
-    // marginTop: 20,
     borderRadius: 6,
     justifyContent: 'center',
   },
