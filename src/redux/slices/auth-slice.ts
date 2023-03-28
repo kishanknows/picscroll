@@ -2,11 +2,11 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   email: null,
-  providerId: null,
   photoURL: null,
   phoneNumber: null,
   displayName: null,
   uid: null,
+  emailVerified: null,
 };
 
 const authSlice = createSlice({
@@ -18,16 +18,16 @@ const authSlice = createSlice({
       state.displayName = action.payload.displayName;
       state.phoneNumber = action.payload.phoneNumber;
       state.photoURL = action.payload.photoURL;
-      state.providerId = action.payload.providerId;
       state.uid = action.payload.uid;
+      state.emailVerified = action.payload.emailVerified;
     },
     unsetUser: state => {
       state.email = null;
       state.displayName = null;
       state.phoneNumber = null;
       state.photoURL = null;
-      state.providerId = null;
       state.uid = null;
+      state.emailVerified = null;
     },
   },
 });

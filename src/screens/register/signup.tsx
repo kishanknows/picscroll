@@ -28,7 +28,16 @@ const SignUpScreen = ({navigation}) => {
         .then(res => {
           res.user.updateProfile({displayName: username}).then(() => {
             console.log('User account created & signed in!');
-            dispatch(setUser(auth().currentUser?.providerData[0]));
+            const currentUser = auth().currentUser;
+            const userInfo = {
+              email: currentUser?.email,
+              photoURL: currentUser?.photoURL,
+              phoneNumber: currentUser?.phoneNumber,
+              displayName: currentUser?.displayName,
+              uid: currentUser?.uid,
+              emailVerified: currentUser?.emailVerified,
+            };
+            dispatch(setUser(userInfo));
             setLoading(false);
             setState({...initialState});
             navigation.reset({index: 0, routes: [{name: 'Home'}]});
