@@ -13,6 +13,10 @@ const postImage = async (result, user) => {
       user_image_url: user.photoURL,
       image_url: url,
       posted_on: Date.now(),
+      likes_count: null,
+      comments_count: null,
+      liked_by: {},
+      comments: [],
     });
   };
 

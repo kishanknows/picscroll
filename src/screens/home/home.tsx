@@ -19,6 +19,7 @@ import catAPI from '../../services/cat-api';
 import dogAPI from '../../services/dog-api';
 import PickerModal from '../../components/picker-modal';
 import UploadModal from '../../components/upload-modal';
+import {Like, Comment} from './like-comment';
 
 const HomeScreen = props => {
   const [posts, setPosts] = useState<FirebaseFirestoreTypes.DocumentData[]>();
@@ -34,7 +35,9 @@ const HomeScreen = props => {
       .orderBy('posted_on', 'desc')
       .get();
     const docs = await Promise.all(
-      postRefs.docs.map(post => post.data()),
+      postRefs.docs.map(post => {
+        return {...post.data(), path: post.ref.path};
+      }),
     ).finally(() => setLoading(false));
     setPosts(docs);
   };
@@ -109,6 +112,20 @@ const HomeScreen = props => {
           </View>
           <Text style={styles.itemDescriptionText}>Abusadamente desp.</Text>
         </View>
+        {tab === 1 && (
+          <View style={styles.likeCommentView}>
+            <Like
+              path={props.path}
+              likes_count={props.likes_count}
+              liked_by={props.liked_by}
+            />
+            <Comment
+              comments_count={props.comments_count}
+              comments={props.comments}
+              path={props.path}
+            />
+          </View>
+        )}
       </View>
     );
   };
@@ -143,6 +160,11 @@ const HomeScreen = props => {
             url={tab === 1 ? item.image_url : item.url}
             username={tab === 1 ? item.username : item.id}
             user_image_url={tab === 1 ? item.user_image_url : null}
+            likes_count={tab === 1 ? item.likes_count : null}
+            comments_count={tab === 1 ? item.comments_count : null}
+            path={tab === 1 ? item.path : null}
+            liked_by={tab === 1 ? item.liked_by : null}
+            comments={tab === 1 ? item.comments : null}
           />
         )}
       />
@@ -187,6 +209,15 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
+  },
+  likeCommentView: {
+    position: 'absolute',
+    height: '60%',
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 1,
+    padding: 15,
   },
 });
 
